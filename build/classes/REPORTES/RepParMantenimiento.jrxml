@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b4d81810-ff0f-4f50-b557-d9925397b3f2">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="Prioridad" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<queryString>
+		<![CDATA[SELECT
+     Mantenimiento."idMantenimiento" AS Mantenimiento_idMantenimiento,
+     Mantenimiento."descripcion" AS Mantenimiento_descripcion,
+     Mantenimiento."tipoMant" AS Mantenimiento_tipoMant,
+     Mantenimiento."prioridad" AS Mantenimiento_prioridad,
+     Mantenimiento."periodoGarantia" AS Mantenimiento_periodoGarantia,
+     Mantenimiento."Estado" AS Mantenimiento_Estado
+FROM
+     "dbo"."Mantenimiento" Mantenimiento
+WHERE
+     Mantenimiento."prioridad" = $P{Prioridad}]]>
+	</queryString>
+	<field name="Mantenimiento_idMantenimiento" class="java.lang.Integer"/>
+	<field name="Mantenimiento_descripcion" class="java.lang.String"/>
+	<field name="Mantenimiento_tipoMant" class="java.lang.String"/>
+	<field name="Mantenimiento_prioridad" class="java.lang.String"/>
+	<field name="Mantenimiento_periodoGarantia" class="java.lang.String"/>
+	<field name="Mantenimiento_Estado" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="686" height="66" backcolor="#000000" uuid="32472256-bcbb-469d-9ca0-92ad07eca697"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="511" height="66" uuid="d11a9ac5-012b-4160-a9df-b5a03f15d623"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement verticalAlignment="Bottom">
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[Reporte Mantenimiento]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="68" width="686" height="34" forecolor="#000000" backcolor="#CC0000" uuid="3ace84e8-69ff-47d7-97f9-99ab3ba2c83d"/>
+				<staticText>
+					<reportElement style="Title" x="341" y="0" width="63" height="32" uuid="6e14e0c8-6bde-4ea3-90cb-416511cac68f"/>
+					<textElement>
+						<font size="24" isBold="false"/>
+					</textElement>
+					<text><![CDATA[OMP]]></text>
+				</staticText>
+			</frame>
+			<staticText>
+				<reportElement style="Title" x="0" y="66" width="333" height="32" uuid="a4d8215f-82a0-4f71-8274-285849c6eb3c"/>
+				<textElement>
+					<font size="20" isBold="false"/>
+				</textElement>
+				<text><![CDATA[__________________________________________-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="392" y="66" width="294" height="32" uuid="cfb9c6df-ad91-462f-918e-753fb2a203f6"/>
+				<textElement>
+					<font size="20" isBold="false"/>
+				</textElement>
+				<text><![CDATA[__________________________________________-]]></text>
+			</staticText>
+			<image>
+				<reportElement x="686" y="0" width="212" height="98" uuid="31160d50-e077-4ee6-a184-208bef93ae02"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="18" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="132" height="18" forecolor="#000000" uuid="6edc297f-9b1f-4955-b58c-9933a8c1b981"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[ID Mantenimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="132" y="0" width="118" height="18" forecolor="#000000" uuid="40aeb35b-4248-41ae-862b-1bba7710bce5"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Descripcion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="250" y="0" width="146" height="18" forecolor="#000000" uuid="0c467e50-51e4-4c92-b4c2-4cd307fba05d"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Tipo de Mantenimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="396" y="0" width="159" height="18" forecolor="#000000" uuid="fcb78cac-bda6-4a8c-b525-13287ec43359"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Prioridad de Mantenimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="555" y="0" width="131" height="18" forecolor="#000000" uuid="1607e6d9-38ba-4dcf-8d53-9bdf5951a0af"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Periodo de grantía]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="686" y="0" width="106" height="18" forecolor="#000000" uuid="4aa3e649-589d-4c42-a1e0-84992e679d9b"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Estado]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="797" height="18" uuid="191d744d-6134-48aa-8713-e607456e7130"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="132" height="18" uuid="a4905605-fcc0-4c0c-94fc-b7267a1cbb01"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Mantenimiento_idMantenimiento}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="132" y="0" width="118" height="18" uuid="a8256855-1d1f-4fea-a51f-0b0a80298b68"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Mantenimiento_descripcion}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="250" y="0" width="146" height="18" uuid="cf0e6157-5682-4480-9e8b-3969ee13c98f"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Mantenimiento_tipoMant}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="396" y="0" width="159" height="18" uuid="3cd96f3f-6930-49d8-b327-e3faa081f6e6"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Mantenimiento_prioridad}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="555" y="0" width="131" height="18" uuid="6d3ecb2c-cd8b-4348-b7e1-892ffebd8cb8"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Mantenimiento_periodoGarantia}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="686" y="0" width="106" height="18" uuid="d92756c6-6f05-4ff2-9b6e-f315d437ff35"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Mantenimiento_Estado}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="6fef8d3e-f429-4687-91a5-8fc261ba2f20"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="25" forecolor="#D0B48E" backcolor="#000000" uuid="a63cfa75-7526-4cb6-93c3-4702cfb774a0"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="757" y="3" width="40" height="20" forecolor="#FFFFFF" uuid="12484f88-429f-4b66-bbbd-6183fa93e60d"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="677" y="3" width="80" height="20" forecolor="#FFFFFF" uuid="1c7cabc7-afcb-467e-ba41-4e997def2097"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF" uuid="35fcda63-267c-4a59-80b0-d7aae7772580"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

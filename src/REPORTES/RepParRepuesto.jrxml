@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bd394c62-266f-440d-946b-a93506bc9708">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="Mayor" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Menor" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<queryString>
+		<![CDATA[SELECT
+     Repuesto."idRepuesto" AS Repuesto_idRepuesto,
+     Repuesto."Nombre" AS Repuesto_Nombre,
+     Repuesto."TipRepuesto" AS Repuesto_TipRepuesto,
+     Repuesto."marca" AS Repuesto_marca,
+     Repuesto."numero_serie" AS Repuesto_numero_serie,
+     Repuesto."stock" AS Repuesto_stock,
+     Repuesto."estado" AS Repuesto_estado
+FROM
+     "dbo"."Repuesto" Repuesto
+WHERE 
+     Repuesto."stock" > $P{Mayor} and Repuesto."stock" < $P{Menor};]]>
+	</queryString>
+	<field name="Repuesto_idRepuesto" class="java.lang.Integer"/>
+	<field name="Repuesto_Nombre" class="java.lang.String"/>
+	<field name="Repuesto_TipRepuesto" class="java.lang.String"/>
+	<field name="Repuesto_marca" class="java.lang.String"/>
+	<field name="Repuesto_numero_serie" class="java.lang.Integer"/>
+	<field name="Repuesto_stock" class="java.lang.Integer"/>
+	<field name="Repuesto_estado" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="131" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="436" height="95" backcolor="#000000" uuid="91233d69-a3d2-4c34-851c-ee52e7cca2e5"/>
+				<staticText>
+					<reportElement style="Title" x="25" y="14" width="370" height="66" uuid="415c1e45-3cd6-42fd-a0ad-29db751bf59e"/>
+					<textElement>
+						<font isBold="false" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[Reporte Repuesto]]></text>
+				</staticText>
+			</frame>
+			<image>
+				<reportElement x="436" y="0" width="230" height="115" uuid="8745df40-b047-46e1-9c48-bb8d0717e81d"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="95" width="431" height="32" forecolor="#000000" backcolor="#CC0000" uuid="a4d11a9f-3959-4e42-afba-c859c41c6d06"/>
+				<line>
+					<reportElement x="2" y="13" width="174" height="1" forecolor="#FFFFFF" uuid="51065066-c1bd-4295-b08b-b51a8f0687ae"/>
+				</line>
+				<line>
+					<reportElement x="230" y="13" width="182" height="2" forecolor="#FFFFFF" uuid="a01fd69b-7188-4f2f-9234-dc0981d98007"/>
+				</line>
+				<staticText>
+					<reportElement x="176" y="0" width="54" height="32" forecolor="#FFFFFF" uuid="887bd741-e4b8-400d-b343-b053d8b5ee59"/>
+					<textElement textAlignment="Center">
+						<font size="20"/>
+					</textElement>
+					<text><![CDATA[OMP]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="7" width="79" height="18" forecolor="#000000" uuid="e31869ef-2f48-4800-842d-9d3e454c094e"/>
+				<textElement>
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="79" y="7" width="79" height="18" forecolor="#000000" uuid="c6892659-6899-4e0a-8239-44dd3c5f513e"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="158" y="7" width="79" height="18" forecolor="#000000" uuid="b243d9bb-efa2-4e85-962b-52d9c646c29f"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Tipo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="237" y="7" width="79" height="18" forecolor="#000000" uuid="c31f513d-2ab3-4b61-8517-ae06f50e07d2"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Marca]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="316" y="7" width="79" height="18" forecolor="#000000" uuid="58f481c8-aa31-4e69-9b84-1fdd93957020"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[N.Serie]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="395" y="7" width="79" height="18" forecolor="#000000" uuid="2756b8a4-c467-421c-bcb2-5eaae4c4601d"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Stock]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="474" y="7" width="79" height="18" forecolor="#000000" uuid="6da86ca5-8e04-45b1-b8b8-281eeb3cd0f5"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Estado]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="18" uuid="c9eeadeb-6d42-4f16-a6ff-ad600c99b601"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="79" height="18" uuid="9e1cb106-90fd-4e60-a3fc-9f2ddfefe798"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Repuesto_idRepuesto}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="79" y="0" width="79" height="18" uuid="f84433f9-10f0-4f80-b3eb-9925955e90be"/>
+					<textElement textAlignment="Center">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Repuesto_Nombre}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="158" y="0" width="79" height="18" uuid="dbecefd6-d899-486b-a8ac-491bb985537d"/>
+					<textElement textAlignment="Center">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Repuesto_TipRepuesto}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="237" y="0" width="79" height="18" uuid="d2fb17cc-9176-4849-b96b-f0531b0dc34b"/>
+					<textElement textAlignment="Center">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Repuesto_marca}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="316" y="0" width="79" height="18" uuid="e2cb01c7-e9fe-4a5b-af66-204817b72c2a"/>
+					<textElement textAlignment="Center">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Repuesto_numero_serie}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="395" y="0" width="79" height="18" uuid="eb800956-1d56-4bbd-81ab-5d2b6c67b751"/>
+					<textElement textAlignment="Center">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Repuesto_stock}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="474" y="0" width="79" height="18" uuid="e1711671-c882-4f55-9bdb-25277399ea4a"/>
+					<textElement textAlignment="Center">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Repuesto_estado}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="1d37bb69-c6e4-40c8-bc49-eac4f61602ca"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="1" width="555" height="24" forecolor="#D0B48E" backcolor="#FF0000" uuid="2104d2d2-5244-48f7-b2e8-aaa3291b4b75"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="513" y="0" width="40" height="20" forecolor="#FFFFFF" uuid="7b327a48-cc67-4cda-9122-7a5f7bdcaf83"/>
+					<textElement verticalAlignment="Middle">
+						<font size="13" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="433" y="0" width="80" height="20" forecolor="#FFFFFF" uuid="d992dd4c-abc2-4041-b7a5-3ae92f5f818c"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="13" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="1" width="197" height="20" forecolor="#FFFFFF" uuid="1b53184d-4079-4a72-8069-43afc2019892"/>
+					<textElement verticalAlignment="Middle">
+						<font size="13" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

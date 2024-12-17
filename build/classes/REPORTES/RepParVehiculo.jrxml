@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b87395f6-9b7c-4f62-a532-63669327cecd">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="MarcaVehi" class="java.lang.String"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<queryString>
+		<![CDATA[SELECT
+     Vehiculo."idVehiculo" AS Vehiculo_idVehiculo,
+     Vehiculo."placa" AS Vehiculo_placa,
+     Vehiculo."marca" AS Vehiculo_marca,
+     Vehiculo."modelo" AS Vehiculo_modelo,
+     Vehiculo."año" AS Vehiculo_año,
+     Vehiculo."estado" AS Vehiculo_estado
+FROM
+     "dbo"."Vehiculo" Vehiculo
+Where Vehiculo."marca" = $P{MarcaVehi}]]>
+	</queryString>
+	<field name="Vehiculo_idVehiculo" class="java.lang.Integer"/>
+	<field name="Vehiculo_placa" class="java.lang.String"/>
+	<field name="Vehiculo_marca" class="java.lang.String"/>
+	<field name="Vehiculo_modelo" class="java.lang.String"/>
+	<field name="Vehiculo_año" class="java.lang.Integer"/>
+	<field name="Vehiculo_estado" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="108" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="451" height="71" backcolor="#000000" uuid="61d9f60e-fd23-427e-9c73-d2ee3cd44436"/>
+				<staticText>
+					<reportElement style="Title" x="43" y="5" width="370" height="66" uuid="9ab8f9a7-aebd-4f7a-9ff6-74742b492d1b"/>
+					<textElement>
+						<font isBold="false" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[Reporte Vehículo]]></text>
+				</staticText>
+			</frame>
+			<image>
+				<reportElement x="451" y="0" width="201" height="103" uuid="e9cd68f5-1db1-4dd4-8a87-75bc68799df6"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="71" width="451" height="32" forecolor="#000000" backcolor="#CC0000" uuid="92acd719-a151-46f3-a9de-53c6c4c6d4d3"/>
+				<line>
+					<reportElement x="2" y="13" width="174" height="1" forecolor="#FFFFFF" uuid="083d2af9-061e-445e-91e6-9b4f982ffd4b"/>
+				</line>
+				<line>
+					<reportElement x="230" y="14" width="203" height="1" forecolor="#FFFFFF" uuid="1b322e96-7546-4760-afa7-430b4785d4ca"/>
+				</line>
+				<staticText>
+					<reportElement x="176" y="0" width="54" height="32" forecolor="#FFFFFF" uuid="cf8b8f76-d545-4091-bbc4-a6f1cc6eea57"/>
+					<textElement textAlignment="Center">
+						<font size="20"/>
+					</textElement>
+					<text><![CDATA[OMP]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="7" width="92" height="18" forecolor="#000000" uuid="81b22f81-d996-4166-add9-56a861eb6723"/>
+				<textElement textAlignment="Right">
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="92" y="7" width="92" height="18" forecolor="#000000" uuid="8315ec51-b70c-42e8-b932-b448bff8417b"/>
+				<textElement textAlignment="Right">
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Placa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="184" y="7" width="92" height="18" forecolor="#000000" uuid="01a197e9-1be3-4567-8547-f4ec798a5b1e"/>
+				<textElement textAlignment="Right">
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Marca]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="276" y="7" width="92" height="18" forecolor="#000000" uuid="5092450c-7c3f-47e1-a514-a083a839aa0e"/>
+				<textElement textAlignment="Right">
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Modelo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="368" y="7" width="92" height="18" forecolor="#000000" uuid="4d42ca65-22cc-4786-aee6-a70d16331053"/>
+				<textElement textAlignment="Right">
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Año]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="460" y="7" width="92" height="18" forecolor="#000000" uuid="41c05797-dba6-4515-8803-05088e4f0da8"/>
+				<textElement textAlignment="Right">
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Estado]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="18" uuid="2ef360fb-710f-4547-8022-a3154a5491ef"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="92" height="18" uuid="e0fe6bc5-7886-4db8-82dd-ffe1d7d5ffc1"/>
+					<textElement textAlignment="Right">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Vehiculo_idVehiculo}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="92" y="0" width="92" height="18" uuid="2e12ca2b-1c63-4348-894e-6ec6ad4df0f3"/>
+					<textElement textAlignment="Right">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Vehiculo_placa}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="184" y="0" width="92" height="18" uuid="53015fc4-0e86-4adf-8d48-61ff7c6033e5"/>
+					<textElement textAlignment="Right">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Vehiculo_marca}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="276" y="0" width="92" height="18" uuid="4940fe4c-6c78-4d65-bc23-6d7092ff9b44"/>
+					<textElement textAlignment="Right">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Vehiculo_modelo}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="368" y="0" width="92" height="18" uuid="a8d4b324-8fc6-4612-a280-fa22d2033668"/>
+					<textElement textAlignment="Right">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Vehiculo_año}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="460" y="0" width="92" height="18" uuid="15a88128-f113-4976-82fd-8df9c4c0c24e"/>
+					<textElement textAlignment="Right">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Vehiculo_estado}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="17b36654-e9ee-4e02-b6e1-3d60e253e3a1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="2" y="1" width="555" height="24" forecolor="#D0B48E" backcolor="#CC0033" uuid="421ab362-8a53-4aab-ab11-dea1ee9d585f"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="513" y="0" width="40" height="20" forecolor="#FFFFFF" uuid="9d823517-94ed-4895-9ffc-d035c4cf6a67"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="433" y="0" width="80" height="20" forecolor="#FFFFFF" uuid="6be840f7-b249-422a-b010-76502b67fff5"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="1" width="197" height="20" forecolor="#FFFFFF" uuid="cadbf41e-8c7a-40ec-978c-ab264b61c48c"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

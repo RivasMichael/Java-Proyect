@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="600" pageHeight="595" orientation="Landscape" columnWidth="560" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="76cdd59e-a946-4e70-9648-e5ac27eb1f61">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<queryString>
+		<![CDATA[SELECT
+     Equipo."idEquipo" AS Equipo_idEquipo,
+     Equipo."numero_serie" AS Equipo_numero_serie,
+     Equipo."Nombre" AS Equipo_Nombre,
+     Equipo."marca" AS Equipo_marca,
+     Equipo."Categoria" AS Equipo_Categoria,
+     Equipo."estado" AS Equipo_estado
+FROM
+     "dbo"."Equipo" Equipo]]>
+	</queryString>
+	<field name="Equipo_idEquipo" class="java.lang.Integer"/>
+	<field name="Equipo_numero_serie" class="java.lang.String"/>
+	<field name="Equipo_Nombre" class="java.lang.String"/>
+	<field name="Equipo_marca" class="java.lang.String"/>
+	<field name="Equipo_Categoria" class="java.lang.String"/>
+	<field name="Equipo_estado" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="66" backcolor="#000000" uuid="d47e91e2-2d91-4e57-a21e-dc3263e07c35"/>
+				<staticText>
+					<reportElement style="Title" x="13" y="8" width="430" height="58" uuid="cb259fc5-03ad-4591-a681-a0b1a5d782b1"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font size="40" isBold="false" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[Reporte de Equipos]]></text>
+				</staticText>
+			</frame>
+			<image>
+				<reportElement x="457" y="0" width="193" height="102" uuid="8960b26b-3567-47a4-bc2f-6db26d147f98"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="70" width="457" height="32" forecolor="#000000" backcolor="#CC0000" uuid="f8ff6720-35d5-41e0-bb18-12b7bd7d76f6"/>
+				<line>
+					<reportElement x="2" y="13" width="174" height="1" forecolor="#FFFFFF" uuid="4879f32e-c61e-4c3d-9e94-92cb37deb574"/>
+				</line>
+				<line>
+					<reportElement x="230" y="14" width="203" height="1" forecolor="#FFFFFF" uuid="7de2c231-8ff9-4c60-88dc-2eb057183314"/>
+				</line>
+				<staticText>
+					<reportElement x="176" y="0" width="54" height="32" forecolor="#FFFFFF" uuid="f0333e3b-6a31-4bc2-9ef7-354981364a42"/>
+					<textElement textAlignment="Center">
+						<font size="20"/>
+					</textElement>
+					<text><![CDATA[OMP]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="18" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="34" height="18" forecolor="#000000" uuid="2b531e6b-fab9-45a0-b2bd-c96ac10ba00a"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="34" y="0" width="80" height="18" forecolor="#000000" uuid="59cc0d78-7e40-4e2e-b98a-7d1a0a8204bf"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[N° de serie]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="114" y="0" width="132" height="18" forecolor="#000000" uuid="3a535d66-8ac4-44cc-bdeb-b5214f2acb0a"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Nombre del equipo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="246" y="0" width="132" height="18" forecolor="#000000" uuid="34af5b40-cbad-4ecb-8b27-4bafd444b012"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Marca del equipo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="378" y="0" width="132" height="18" forecolor="#000000" uuid="808d911e-e35c-466d-9322-f5369db7e023"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Categoría del equipo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="510" y="0" width="45" height="18" forecolor="#000000" uuid="e9eb8b1f-3b0b-42df-ae18-01961294c07e"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Estado]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="797" height="18" uuid="200d9ebe-b878-467e-a125-13a6addbe1e4"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="34" height="18" uuid="18883b98-15da-4b94-b859-bf6349ea8125"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Equipo_idEquipo}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="34" y="0" width="80" height="18" uuid="ee79bdee-12ed-4f42-af93-67bb726e05b5"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Equipo_numero_serie}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="114" y="0" width="132" height="18" uuid="c4f77db6-f6b8-4a7b-80a3-b57b278551bb"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Equipo_Nombre}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="246" y="0" width="132" height="18" uuid="a0c4e844-46b9-441e-a0e2-c235d128e254"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Equipo_marca}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="378" y="0" width="132" height="18" uuid="04834e63-b47d-47f2-9d14-ad712324bc67"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Equipo_Categoria}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="510" y="0" width="45" height="18" uuid="1d16b8c3-0e6b-4dbd-bb0c-3ba7c27d5422"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Equipo_estado}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="4c67ce84-6a78-456e-ae16-60ce9f9cbb72"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="2" y="1" width="555" height="24" forecolor="#D0B48E" backcolor="#FF3333" uuid="c8bced20-b61f-4b5f-b3c7-ab471abd64a7"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="513" y="0" width="40" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="75e8dc85-33ed-4a82-b9ea-cfa1d076d202"/>
+					<textElement verticalAlignment="Middle">
+						<font size="11" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="433" y="0" width="80" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="0fd803aa-956f-4074-8d71-e22901a4b736"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="11" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="1" width="197" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="578b7616-9731-4da5-8ce6-5e5b69e47c3c"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
